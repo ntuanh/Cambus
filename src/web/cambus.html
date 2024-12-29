@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   CAMBUS - Theo dõi xe buýt và trực quan hóa dữ liệu
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="font-roboto bg-gray-100">
+  <header class="bg-blue-600 text-white p-4">
+   <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-2xl font-bold">
+     CAMBUS
+    </h1>
+    <nav>
+     <ul class="flex space-x-4">
+      <li>
+       <a class="hover:underline" href="#">
+        Trang chủ
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        Bảng điều khiển
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        Báo cáo
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        Cài đặt
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <main class="container mx-auto p-4">
+   <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">
+     Theo dõi xe buýt trực tiếp
+    </h2>
+    <div class="bg-white p-4 rounded shadow-md">
+     <div class="flex justify-between items-center mb-4">
+      <div>
+       <h3 class="text-lg font-medium">
+        Xe buýt #1234
+       </h3>
+       <p class="text-gray-600">
+        Tuyến: Trường đến Nhà
+       </p>
+      </div>
+      <div class="text-right">
+       <p class="text-gray-600">
+        Vị trí hiện tại:
+       </p>
+       <p class="font-semibold">
+        Đại Cồ Việt &amp; Giải Phóng
+       </p>
+      </div>
+     </div>
+     <div id="map" style="width: 100%; height: 500px;"></div>
+     <script>
+        function initMap() {
+            var busPosition = {lat: 21.007523501851942, lng: 105.84214595680014};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: busPosition
+            });
+            var marker = new google.maps.Marker({
+                position: busPosition,
+                map: map,
+                title: 'Bus Position'
+            });
+        }
+        window.onload = initMap;
+     </script>
+     <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi6xVW85yYuYu_zyiYqotbeVq_ntixiGE&callback=initMap">
+     </script>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">
+     Dữ liệu người vào/ra
+    </h2>
+    <div class="bg-white p-4 rounded shadow-md">
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+       <h3 class="text-lg font-medium mb-2">
+        Người vào
+       </h3>
+       <ul class="space-y-2">
+     <li class="flex justify-between items-center">
+         <span>
+          Nguyễn Văn A
+         </span>
+         <span class="text-gray-600">
+          08:00 AM
+         </span>
+        </li>
+     <li class="flex justify-between items-center">
+         <span>
+          Trần Văn B
+         </span>
+         <span class="text-gray-600">
+          08:05 AM
+         </span>
+        </li>
+     <li class="flex justify-between items-center">
+         <span>
+          Trương Văn C
+         </span>
+         <span class="text-gray-600">
+          08:10 AM
+         </span>
+        </li>
+     <li class="flex justify-between items-center">
+         <span>
+          Nguyễn Tấn X
+         </span>
+         <span class="text-gray-600">
+          08:15 AM
+         </span>
+        </li>
+     <li class="flex justify-between items-center">
+         <span>
+          Nguyễn Thị E
+         </span>
+         <span class="text-gray-600">
+          08:20 AM
+         </span>
+        </li>
+       </ul>
+      </div>
+      <div>
+       <h3 class="text-lg font-medium mb-2">
+        Người ra
+       </h3>
+       <ul class="space-y-2">
+        <li class="flex justify-between items-center">
+         <span>
+          Nguyễn Văn C
+         </span>
+         <span class="text-gray-600">
+          03:00 PM
+         </span>
+        </li>
+        <li class="flex justify-between items-center">
+         <span>
+          Trần Thị C
+         </span>
+         <span class="text-gray-600">
+          03:05 PM
+         </span>
+        </li>
+        <li class="flex justify-between items-center">
+         <span>
+          Hứa Văn C
+         </span>
+         <span class="text-gray-600">
+          03:10 PM
+         </span>
+        </li>
+        <li class="flex justify-between items-center">
+         <span>
+          Đinh Văn A
+         </span>
+         <span class="text-gray-600">
+          03:15 PM
+         </span>
+        </li>
+        <li class="flex justify-between items-center">
+         <span>
+          Cao Văn C
+         </span>
+         <span class="text-gray-600">
+          03:20 PM
+         </span>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">
+     Biểu đồ người vào/ra
+    </h2>
+    <div class="bg-white p-4 rounded shadow-md">
+     <canvas id="barChart" class="w-full" height="300"></canvas>
+     <script>
+       const ctx = document.getElementById('barChart').getContext('2d');
+       const barChart = new Chart(ctx, {
+         type: 'bar',
+         data: {
+           labels: ['08:00 AM', '08:05 AM', '08:10 AM', '08:15 AM', '08:20 AM', '03:00 PM', '03:05 PM', '03:10 PM', '03:15 PM', '03:20 PM'],
+           datasets: [{
+             label: 'Người vào',
+             data: [5, 10, 15, 20, 25, 0, 0, 0, 0, 0], // Example data for "VÀO"
+             backgroundColor: 'rgba(75, 192, 192, 0.5)',
+             borderColor: 'rgba(75, 192, 192, 1)',
+             borderWidth: 1
+           },
+           {
+             label: 'Người ra',
+             data: [0, 0, 0, 0, 0, 5, 10, 15, 20, 25], // Example data for "RA"
+             backgroundColor: 'rgba(255, 99, 132, 0.5)',
+             borderColor: 'rgba(255, 99, 132, 1)',
+             borderWidth: 1
+           }]
+         },
+         options: {
+           responsive: true,
+           scales: {
+             x: {
+               title: {
+                 display: true,
+                 text: 'Thời gian'
+               }
+             },
+             y: {
+               title: {
+                 display: true,
+                 text: 'Số lượng người'
+               },
+               ticks: {
+                 beginAtZero: true,
+                 stepSize: 1 // Set step size to 1 to ensure integer values
+               }
+             }
+           }
+         }
+       });
+     </script>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">
+     Biểu đồ phân bố độ tuổi
+    </h2>
+    <div class="bg-white p-4 rounded shadow-md" style="width: 25%;">
+     <canvas id="ageDistributionChart" class="w-full" height="300"></canvas>
+     <script>
+       const ageCtx = document.getElementById('ageDistributionChart').getContext('2d');
+       const ageDistributionChart = new Chart(ageCtx, {
+         type: 'pie',
+         data: {
+           labels: ['Trẻ em', 'Người lớn', 'Người già'],
+           datasets: [{
+             label: 'Phân bố độ tuổi',
+             data: [30, 50, 20], // Example data for children, adults, and old people
+             backgroundColor: [
+               'rgba(75, 192, 192, 0.5)',
+               'rgba(255, 206, 86, 0.5)',
+               'rgba(255, 99, 132, 0.5)'
+             ],
+             borderColor: [
+               'rgba(75, 192, 192, 1)',
+               'rgba(255, 206, 86, 1)',
+               'rgba(255, 99, 132, 1)'
+             ],
+             borderWidth: 1
+           }]
+         },
+         options: {
+           responsive: true,
+           plugins: {
+             legend: {
+               position: 'top',
+             },
+             title: {
+               display: true,
+               text: 'Phân bố độ tuổi'
+             }
+           }
+         }
+       });
+     </script>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">
+     Đánh giá của người dùng
+    </h2>
+    <div class="bg-white p-4 rounded shadow-md">
+     <canvas id="userRatingLineChart" class="w-full" height="300"></canvas>
+     <script>
+       const lineCtx = document.getElementById('userRatingLineChart').getContext('2d');
+       const userRatingLineChart = new Chart(lineCtx, {
+         type: 'line', // Set to 'line' for line chart
+         data: {
+           labels: ['Rất tốt', 'Tốt', 'Trung bình', 'Kém'],
+           datasets: [{
+             label: 'Đánh giá của người dùng',
+             data: [50, 30, 15, 5], // Example data for user ratings
+             backgroundColor: 'rgba(75, 192, 192, 0.5)',
+             borderColor: 'rgba(75, 192, 192, 1)',
+             borderWidth: 2,
+             fill: true // Fill under the line
+           }]
+         },
+         options: {
+           responsive: true,
+           scales: {
+             x: {
+               title: {
+                 display: true,
+                 text: 'Đánh giá'
+               }
+             },
+             y: {
+               title: {
+                 display: true,
+                 text: 'Số lượng'
+               },
+               beginAtZero: true // Ensure the y-axis starts at zero
+             }
+           }
+         }
+       });
+     </script>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-blue-600 text-white p-4 mt-8">
+   <div class="container mx-auto text-center">
+    <p>
+     © 2024 CAMBUS. Bảo lưu mọi quyền.
+    </p>
+   </div>
+  </footer>
+</body>
+</html>

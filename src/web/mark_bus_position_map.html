@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Position Marking</title>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi6xVW85yYuYu_zyiYqotbeVq_ntixiGE"></script>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h3>Bus Position on Map</h3>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var busPosition = {lat: 21.007523501851942, lng: 105.84214595680014};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: busPosition
+            });
+            var marker = new google.maps.Marker({
+                position: busPosition,
+                map: map,
+                title: 'Bus Position'
+            });
+        }
+        window.onload = initMap;
+    </script>
+    <!-- Replace YOUR_API_KEY with your actual Google Maps API key -->
+</body>
+</html>
